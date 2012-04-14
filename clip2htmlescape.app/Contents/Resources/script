@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
+require 'tempfile'
 
-clip = `pbpaste`.strip
+clip = `pbpaste`
 
 [{
    '&' => '&amp;'
@@ -9,9 +10,6 @@ clip = `pbpaste`.strip
    '<' => '&lt;',
    '>' => '&gt;' ,
    '"' => '&quot;'
- },
- {
-   '$' => '\$'
  }
 ].each do |h|
   h.each do |k,v|
@@ -19,4 +17,8 @@ clip = `pbpaste`.strip
   end
 end
 
-system "echo \"#{clip}\" | pbcopy"
+f = Tempfile.new('clip2htmlescape')
+f.write clip
+f.close
+
+system "cat #{f.path} | pbcopy"
