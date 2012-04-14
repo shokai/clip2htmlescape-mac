@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+clip = `pbpaste`.strip
+
+[{
+   '&' => '&amp;'
+ },
+ {
+   '<' => '&lt;',
+   '>' => '&gt;' ,
+   '"' => '&quot;'
+ },
+ {
+   '$' => '\$'
+ }
+].each do |h|
+  h.each do |k,v|
+    clip.gsub!(k,v)
+  end
+end
+
+system "echo \"#{clip}\" | pbcopy"
