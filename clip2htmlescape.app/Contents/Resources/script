@@ -1,24 +1,5 @@
 #!/usr/bin/env ruby
-require 'tempfile'
+require 'cgi'
 
-clip = `pbpaste`
-
-[{
-   '&' => '&amp;'
- },
- {
-   '<' => '&lt;',
-   '>' => '&gt;' ,
-   '"' => '&quot;'
- }
-].each do |h|
-  h.each do |k,v|
-    clip.gsub!(k,v)
-  end
-end
-
-f = Tempfile.new('clip2htmlescape')
-f.write clip
-f.close
-
-system "cat #{f.path} | pbcopy"
+escaped = CGI.escapeHTML(`pbpaste`).gsub("'"){ "'\\''" }
+system "echo '#{escaped}' | pbcopy"
