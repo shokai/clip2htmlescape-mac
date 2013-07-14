@@ -8,7 +8,7 @@ escape HTML in the clipboard.
 Download
 --------
 
-* [cilp2htmlescape.app](https://github.com/shokai/clip2htmlescape-mac/raw/master/clip2htmlescape.zip)
+* [cilp2htmlescape.app (zip)](https://github.com/shokai/clip2htmlescape-mac/raw/master/clip2htmlescape.zip)
 
 Build
 -----
