@@ -1,8 +1,9 @@
 clip2htmlescape
 ===============
+escape HTML in the clipboard.
 
-* code -> clipboard -> Run This App -> escaped code!!
-* for Mac OSX
+- https://github.com/shokai/clip2htmlescape-mac
+- for Mac OSX
 
 Download
 --------
