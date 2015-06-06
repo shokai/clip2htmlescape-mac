@@ -1,5 +1,14 @@
 #!/usr/bin/env ruby
-require 'cgi'
+src = `pbpaste`
 
-escaped = CGI.escapeHTML(`pbpaste`).gsub("'"){ "'\\''" }
+escaped = src.clone
+{
+  '&' => '&amp;',
+  '<' => '&lt;',
+  '>' => '&gt;',
+  "'" => "'\\''"
+}.each do |k,v|
+  escaped.gsub!(k){ v }
+end
+
 system "echo '#{escaped}' | pbcopy"
